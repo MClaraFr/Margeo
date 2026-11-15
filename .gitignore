@@ -36,3 +36,7 @@ desktop.ini
 /apps/mobile/.dart_tool/
 
 /vendor/
+
+# Arquivos auxiliares de ferramentas de IA
+/apps/api/AGENTS.md
+/apps/api/CLAUDE.md
