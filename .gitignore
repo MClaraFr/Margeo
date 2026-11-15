@@ -1,0 +1,38 @@
+﻿# Credenciais e arquivos de ambiente
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Laravel
+/apps/api/vendor/
+/apps/api/storage/*.key
+/apps/api/bootstrap/cache/*.php
+
+# Flutter e Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+build/
+**/flutter/ephemeral/
+**/.plugin_symlinks/
+
+# IDE e sistema operacional
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Cache local do Composer
+/apps/api/.composer/
+
+# Arquivos gerados pelo Flutter
+/apps/mobile/build/
+/apps/mobile/.dart_tool/
+
+/vendor/

@@ -1,0 +1,70 @@
+@baseUri = http://localhost:8183/api
+
+### Login
+# @name login
+POST {{baseUri}}/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "whatsapp": "42927272727",
+    "password": "Mgeo50"
+}
+
+###
+@token = {{login.response.body.token}}
+
+### Listar aplicações
+GET {{baseUri}}/applications
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar aplicação
+POST {{baseUri}}/applications
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "plot_id": 1,
+    "application_date": "2026-11-11",
+    "area_ha": 15,
+    "products": [
+        {
+            "product_id": 1,
+            "quantity_per_ha": 0.75
+        },
+        {
+            "product_id": 2,
+            "quantity_per_ha": 0.5
+        }
+    ]
+}
+
+### Consultar aplicação
+GET {{baseUri}}/applications/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Atualizar aplicação
+PUT {{baseUri}}/applications/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "plot_id": 1,
+    "application_date": "2026-11-12",
+    "area_ha": 12,
+    "products": [
+        {
+            "product_id": 1,
+            "quantity_per_ha": 0.8
+        }
+    ]
+}
+
+### Excluir aplicação
+DELETE {{baseUri}}/applications/1
+Accept: application/json
+Authorization: Bearer {{token}}

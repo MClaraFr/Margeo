@@ -1,0 +1,80 @@
+
+@baseUri = http://localhost:8183/api
+@token = {{login.response.body.$.token}}
+
+### Listar talhões
+GET {{baseUri}}/plots
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### Cadastrar talhão
+POST {{baseUri}}/plots
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Vale",
+    "area_ha": 8
+}
+
+
+### Testar nome duplicado
+POST {{baseUri}}/plots
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "vale",
+    "area_ha": 10
+}
+
+
+### Testar área inválida
+POST {{baseUri}}/plots
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Campo Novo",
+    "area_ha": 0
+}
+
+
+### Testar área negativa
+POST {{baseUri}}/plots
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Campo Teste",
+    "area_ha": -5
+}
+
+
+### Editar talhão Vale
+PUT {{baseUri}}/plots/3
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Vale Atualizado",
+    "area_ha": 10
+}
+
+
+### Excluir talhão Vale Atualizado
+DELETE {{baseUri}}/plots/3
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### Testar acesso sem token
+GET {{baseUri}}/plots
+Accept: application/json
+

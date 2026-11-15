@@ -1,0 +1,56 @@
+
+@baseUri = http://localhost:8183/api
+
+### Login
+# @name login
+POST {{baseUri}}/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "whatsapp": "42927272727",
+    "password": "Mgeo50"
+}
+
+###
+@token = {{login.response.body.token}}
+
+### Listar produtos
+GET {{baseUri}}/products
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Consultar produto
+GET {{baseUri}}/products/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Cadastrar produto
+# @name createProduct
+POST {{baseUri}}/products
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Ampligo",
+    "unit": "L",
+    "price_per_unit": 180.00
+}
+
+### Atualizar produto
+PUT {{baseUri}}/products/3
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Ampligo Atualizado",
+    "unit": "L",
+    "price_per_unit": 195.00
+}
+
+### Excluir produto
+DELETE {{baseUri}}/products/3
+Accept: application/json
+Authorization: Bearer {{token}}
